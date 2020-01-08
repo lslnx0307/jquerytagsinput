@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<link rel="stylesheet" type="text/css" href="css/jquery.tagsinput.css" />
+<link rel="stylesheet" type="text/css" href="css/cacl.css" />
+<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/jquery-ui-1.11.0.css">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="layer-v3.1.1/layer/layer.js"></script>
+<script src="js/cacl.js"></script>
+
+<body>
+    <div class="addCondition">
+        <div class="condition" id="condition"></div>
+        <button id="add" onclick="addAlertDialog()">新增条件</button>
+    </div>
+</body>
+<!-- 存放拼接好的json字符串的隐藏域-->
+<div id="hidenSpace"></div>
+
+<div style="display: none;" id="cacl" class="container">
+    <div class="main">
+        <div class="left" id="caclResult" data-val=""></div>
+        <div class="right">
+            <select id="conditionSelect">
+                <option value="0">添加条件</option>
+                <option value="1">购物满X件</option>
+                <option value="2">会员类型</option>
+                <option value="3">购物金额设置</option>
+                <option value="6">送赠品</option>
+            </select>
+            <br>
+            <select id="resultSelect">
+                <option value="0">活动形式</option>
+                <option value="4">直接满减打折</option>
+                <option value="5">优惠券活动</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="dialog" id="shopEnoughDialog">
+    <table class="center">
+        <tr>
+            <td>购物满X件</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="addOnNums" id='addOnNums' name="addOnNums">是否凑单数量</td>
+        </tr>
+        <tr>
+            <td>>=&nbsp;<input type="tel" id="quantity"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="dialog" id="memberTypeDialog">
+    <table class="center">
+        <tr>
+            <td>会员类型</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="memberTypeClass" value="all">所有人</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="memberTypeClass" value="guest">游客</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="memberTypeClass" value="normal">会员</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="memberTypeClass" value="employee">员工会员</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="memberTypeClass" value="specialMember">特俗折扣会员</td>
+        </tr>
+        <tr>
+            <td>特俗人群<input type="text" placeholder="编号，多个逗号分隔" id="limitGroupUser" /></td>
+        </tr>
+    </table>
+</div>
+
+<div class="dialog" id="shopAmountDialog">
+    <table class="center">
+        <tr>
+            <td>活动商品金额</td>
+        </tr>
+        <tr>
+            <td>》=<input type="tel" id="amountExtTotalDiscount" /></td>
+        </tr>
+    </table>
+</div>
+
+<div class="dialog" id="fullReductionDialog">
+    <table class="center">
+        <tr>
+            <td>直接满减打折</td>
+        </tr>
+        <tr>
+            <td class="hint">&gt;1则减钱，小于1则打折</td>
+        </tr>
+        <tr>
+            <td>优惠券金额<input type="tel" id="discount"></td>
+        </tr>
+    </table>
+</div>
+
+<div class="dialog" id="giftDialog">
+    <table class="center">
+        <tr>
+            <td>送赠品<select id="gift">
+                <option value="0">请选择</option>
+                <option>哈士奇</option>
+                <option>大金毛</option>
+                <option>小泰迪</option>
+                <option>小狼狗</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="gift">香港赠品</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" class="gift">澳门赠品</td>
+        </tr>
+    </table>
+</div>
+
+<div class="dialog" id="couponDialog">
+    <table class="center">
+        <tr>
+            <td>优惠券code：<input type="text" id="couponCode" /></td>
+            <td>密码位数：<select>
+                    <option value="16">16</option>
+                </select></td>
+            <td>次数<select>
+                    <option value="1">一次</option>
+                </select></td>
+            <td>折扣件数<select>
+                    <option value="2">多件</option>
+                </select></td>
+        </tr>
+        <tr>
+            <td>折扣卡金额：<input type="text" id="discountCardAmount" /></td>
+            <td>生成数量：<input type="number" id="nums" /></td>
+            <td>开始时间：<input type="text" id="couponCode" /></td>
+            <td>截止时间：<input type="text" id="couponCode" /></td>
+        </tr>
+        <tr>
+            <td>折扣卡中文：<input type="text" id="discountCardCH" /></td>
+            <td>折扣卡英文：<input type="text" id="discountCardEN" /></td>
+        </tr>
+        <tr>
+            <td class="hint"> 优惠券如需编辑两行文案，请按照此格式输入。例如：两件八折(\/br)三件七折</td>
+        </tr>
+    </table>
+</div>
+
+</html>
