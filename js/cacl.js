@@ -12,6 +12,8 @@ function cacl() {}
 var condition = new cacl();
 var result = new cacl();
 var action = new cacl();
+//优惠券
+var coupon = {};
 $(function () {
     $(".right select").on('change', function () {
         var selectVal = $(this).val();
@@ -58,8 +60,11 @@ $(function () {
             moveType: 1,
             content: $('#' + context),
             btn: ['确认', '取消'],
-            yes: function (index, layero) {
+            yes: function (index) {
                 //确认的回调
+                if(selectVal == 5) {
+                    
+                }
                 createJson(selectVal);
                 addTag(selectVal);
                 layer.close(index);
@@ -153,10 +158,13 @@ function addTag(selectVal) {
         default:
             break;
     }
-    var tagSpan = "<span class ='tag' id='tag_" + selectVal + "' selectVal='" + selectVal + "' data-val=''><span onClick='showDialog(" + selectVal + ")'>" +
+    var tagSpan = "<span class ='tag' id='tag_" + selectVal + "' selectVal='" + selectVal + "' data-val='' coupon-val=''><span onClick='showDialog(" + selectVal + ")'>" +
         title + "</span>&nbsp;&nbsp;<span><a href='#' onClick='removeTag(" + selectVal + ")'>x</a></span></span>";
     cacl.append(tagSpan);
     $('#tag_' + selectVal).attr('data-val', JSON.stringify(result))
+    if(selectVal == 5) {
+        $('#tag_' + selectVal).attr('coupon-val', JSON.stringify(result))
+    }
     console.log("addTag", JSON.stringify(result))
 }
 
@@ -248,6 +256,16 @@ function createJson(selectVal) {
             break;
         case "5":
             title = "优惠券活动";
+            coupon.pwd = $('#pwd').val();
+            coupon.pwdLength = $('#pwdLength').val();
+            coupon.isCycle = $('#isCycle :checked').val();
+            coupon.isMulti = $('#isMulti :checked').val();
+            coupon.useLimit = $('#useLimit').val();
+            coupon.nums = $('#nums').val();
+            coupon.effectiveTime = $('#effectiveTime').val();
+            coupon.expireTime = $('#expireTime').val();
+            coupon.chinaName = $('#chinaName').val();
+            coupon.englishName = $('#englishName').val();
             break;
         case "6":
             //送赠品
@@ -294,18 +312,21 @@ function getTextByJquery(arr) {
 //活动新增页面添加标签
 function addConditionTag(index) {
     var json = JSON.stringify(result);
+    var couponJson = JSON.stringify(coupon);
     var conditionhtml = $('#condition');
-    var tagSpan = "<span class ='conditionTag' id='conditionTag_" + index + "' data-val=''><span>" + "条件" +
+    var tagSpan = "<span class ='conditionTag' id='conditionTag_" + index + "' data-val='' coupon-val=''><span>" + "条件" +
         index + "</span><a href='#' onClick='removeConditionTag(" + index + ")'>x</a></span>";
     conditionhtml.append(tagSpan);
 
     $('#conditionTag_' + index).on('click', function () {
         conditionDialog(this);
     });
-    $('#conditionTag_' + index).attr('data-val', json)
+    $('#conditionTag_' + index).attr('data-val', json);
+    $('#conditionTag_' + index).attr('coupon-val', couponJson);
     action = new cacl();
     condition = new cacl();
     result = new cacl();
+    coupon={};
 }
 
 //更新活动新增页面的标签内容

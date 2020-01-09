@@ -106,11 +106,11 @@
     <table class="center">
         <tr>
             <td>送赠品<select id="gift">
-                <option value="0">请选择</option>
-                <option>哈士奇</option>
-                <option>大金毛</option>
-                <option>小泰迪</option>
-                <option>小狼狗</option>
+                    <option value="0">请选择</option>
+                    <option>哈士奇</option>
+                    <option>大金毛</option>
+                    <option>小泰迪</option>
+                    <option>小狼狗</option>
                 </select></td>
         </tr>
         <tr>
@@ -125,26 +125,28 @@
 <div class="dialog" id="couponDialog">
     <table class="center">
         <tr>
-            <td>优惠券code：<input type="text" id="couponCode" /></td>
-            <td>密码位数：<select>
+            <td>优惠券code：<input type="text" id="pwd" /></td>
+            <td>密码位数：<select id="pwdCount">
                     <option value="16">16</option>
                 </select></td>
-            <td>次数<select>
+            <td>次数<select id="isCycle">
                     <option value="1">一次</option>
+                    <option value="2">多次</option>
                 </select></td>
-            <td>折扣件数<select>
+            <td>折扣件数<select id="isMulti">
+                    <option value="1">单件</option>
                     <option value="2">多件</option>
                 </select></td>
         </tr>
         <tr>
-            <td>折扣卡金额：<input type="text" id="discountCardAmount" /></td>
-            <td>生成数量：<input type="number" id="nums" /></td>
-            <td>开始时间：<input type="text" id="couponCode" /></td>
-            <td>截止时间：<input type="text" id="couponCode" /></td>
+            <td>折扣卡金额：<input type="text" id="cardValue" /></td>
+            <td>生成数量：<input type="tel" id="count" /></td>
+            <td>开始时间：<input type="text" id="effectiveTime" /></td>
+            <td>截止时间：<input type="text" id="expireTime" /></td>
         </tr>
         <tr>
-            <td>折扣卡中文：<input type="text" id="discountCardCH" /></td>
-            <td>折扣卡英文：<input type="text" id="discountCardEN" /></td>
+            <td>折扣卡中文：<input type="text" id="chinaName" /></td>
+            <td>折扣卡英文：<input type="text" id="englishName" /></td>
         </tr>
         <tr>
             <td class="hint"> 优惠券如需编辑两行文案，请按照此格式输入。例如：两件八折(\/br)三件七折</td>
