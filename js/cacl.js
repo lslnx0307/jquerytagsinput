@@ -9,9 +9,7 @@ var diaLogIds = {
 };
 
 function cacl() {}
-var condition = new cacl();
-var result = new cacl();
-var action = new cacl();
+
 //优惠券
 var coupon = {};
 $(function () {
@@ -83,6 +81,10 @@ $(function () {
 var i = 0;
 
 function addAlertDialog() {
+
+    var condition = new cacl();
+    var result = new cacl();
+    var action = new cacl();
 
     layer.open({
         type: 1,
@@ -552,3 +554,7 @@ function updateTagData(jsonbject1, jsonbject2) {
     }
     return resultJsonObject
 }
+/**
+ * 1.更新的时候，把每个小标签的内容绑在自己 身上，在确认的时候 重新拼装json字符串
+ * 
+ */
